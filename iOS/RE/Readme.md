@@ -375,10 +375,12 @@ For example:
 
  -> Intercept and replace return value of address
 \di[0,1,-1] [addr]
+
  -> Run Frida script
 \. script.js
+
  -> Execute Frida inline command
-\eval <frida command>
+\eval <js frida command>
 
 For example:
 To Inspect the ObjC UI KeyWindow from r2frida
@@ -394,7 +396,7 @@ To Inspect the ObjC UI KeyWindow from r2frida
 \/v[1248][j] value
 ```
 
-##R2
+## R2
 ### Start an empty r2 session
 ```
 r2 -
