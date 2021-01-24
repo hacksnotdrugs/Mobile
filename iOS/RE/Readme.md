@@ -1,4 +1,4 @@
-### Update r2
+### Update r2 stuff
 clone git and run:
 ```
 ./sys/install.sh
@@ -281,27 +281,27 @@ r2 frida://attach/usb//<app name>
 \is[*] <lib>
 ```
  -> List symbols of lib but only export global ones:
- ```
+```
 \iE[*] <lib>
-	```
+```
  -> Show address of symbol:
- ```
+```
 \isa[*] (<lib>) <sym>
-	```
+```
  -> show entrypoint:
- ```
+```
 \ie
 ```
  -> List Objective-C classes or methods of <class>:
- ```
+```
 \ic <class>
-	```
+```
  -> List Objective-C protocols or methods of <protocol>:
- 	```
+```
 \ip <protocol>
 ```
  -> Inverse symbol resolution:
- ```
+```
 \fd[*j] <address>
 ```
 
@@ -309,11 +309,11 @@ r2 frida://attach/usb//<app name>
 ### Tracing
 
  -> Trace the list of registers specified when executing addr
- ```
+```
 \dtr addr reg0 reg1
 ```
  -> Trace address with format (^ixzO)
- ```
+```
 \dtf <addr> [fmt]
 
 // Example:
@@ -321,38 +321,47 @@ r2 frida://attach/usb//<app name>
 \dtf ptrace iiii
 ```
  -> Trace list of addresses or symbols
- ```
+```
 \dt (<addr>|<sym>)
 ```
  -> Trace at current offset
- ```
+```
 \dt.
 ```
  -> Show memory regions
- ```
+```
 \dm[.|j|*]
 ```
  -> Clear all tracing
- ```
+```
 \dt-
 ```
-
+ -> Tracing all functions of a given class:
+```
+\dtf $$ @@=`\ic* <class_name>~[2]`
+```
+ -> Tracing all functions of a given framework:
+```
+ // The $$ serves as the \dtf parameter. And it means at current offset
+ // The @@= iterates the addresses returned by the \iE command
+ \dtf $$ @@=`\iE* <frameworkName>~sym.fun[2]`
+```
 ### Debugging Commands
 
  -> List or place breakpoint:
- ```
+```
 \db (<addr>|<sym>)
 ```
  -> Remove breakpoint(s):
- ```
+```
 \db- (<addr>|<sym>)|*
 ```
  -> Continue breakpoints or resume a spawned process:
- ```
+```
 \dc
 ```
  -> start the chrome tools debugger:
- ```
+```
 \d.
 ```
 
