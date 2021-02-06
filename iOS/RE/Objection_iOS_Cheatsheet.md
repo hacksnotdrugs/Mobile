@@ -16,6 +16,7 @@ Spawn an app from objection and execute early instrumentation command (disable s
 ```
 objection -g <bundle_ID> explore --startup-command 'ios sslpinning disable'
 ```
+## Recon
 
 List Bundles:
 ```
@@ -85,14 +86,57 @@ Changing a method's boolean return value (ONLY WORKS FOR BOOLEANS)
 ios hooking set return_value "-[<class name> <method name>]" false
 ```
 
+
+## File Management
+
+Print a file's content:
+```
+file cat <filename>
+```
+
+Print a Plist:
+```
+ios plist cat <filename>
+```
+
+Download a file:
+```
+file download <remote_filename> <local_destination>
+```
+
+Upload a file:
+```
+file upload <local_filename> <remote_destination>
+```
+
+Start HTTP file server:
+```
+file http start
+```
+
+Stop HTTP File server
+```
+file http stop
+```
+
 ## Misc
+
+Get app's folders:
+```
+env
+```
 
 Get app's shared cookies:
 ```
 ios cookies get
 ```
+### SSLPinning
+Disable SSLPinning
+```
+ios sslpinning disable
+```
 
-
+### Jailbreak detection
 Jailbreak disable/simulation:
 ```
 ios jailbreak disable/simulate
@@ -104,7 +148,6 @@ Dump keychain:
 ```
 ios keychain dump
 ```
-
 
 ### Monitor the pasteboard
 
